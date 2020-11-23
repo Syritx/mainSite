@@ -1,0 +1,30 @@
+@media only screen and (max-width: 620px) {
+    .nav {
+        height: 140px;
+        display: inline-block;
+    }
+
+    .text-bold-nav {
+        width: 50%;
+        margin-left: 0px;
+        margin-right: 0px;
+        float: left;
+        height: 70px;
+    }
+
+    .text-normal-nav {
+        width: 50%;
+        margin-left: 0px;
+        margin-right: 0px;
+        float: left;
+        height: 70px;
+    }
+
+    .over {
+        height: 865px;
+    }
+
+    .welcome {
+        height: 660px;
+    }
+}
