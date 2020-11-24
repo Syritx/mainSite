@@ -63,6 +63,11 @@ body {
     font-size: 25px;
     margin-left: 20px;
     margin-right: 20px;
+    transition: color .2s ease-in-out;
+}
+
+.text-normal-nav:hover {
+    color: rgb(64, 152, 241);
 }
 
 .welcome {
@@ -158,6 +163,10 @@ body {
     color: rgb(64, 152, 241);
 }
 
+#github-social-icon {
+    background-image: url("");
+}
+
 
 .glsect {
     position: relative;
@@ -168,4 +177,11 @@ body {
 
     justify-content: center;
     align-items: center;
+}
+
+
+
+
+.text-normal-nav:hover {
+    cursor: pointer;
 }
