@@ -7,9 +7,7 @@
     </head>
 
     <body>
-        <canvas id="game" width="4000px" height="1600px">
-        </canvas>
-
+        <div class="background-welcome"></div>
         <div class="over"></div>
         <div class="nav"> 
             <div class="text-bold-nav">SYRITX</div>
@@ -20,13 +18,14 @@
         <div class="welcome">
             <div class="title">
                 <div class="header-text">welcome</div>
+                <div class="semi-header-text" style="margin-top: 10px;">to novurix.com</div>
             </div>
         </div>
 
         <canvas id="procedural-generation" width="4000px" height="1600px">
         </canvas>
         <div class="over-pg"></div>
-        <div class="welcome">
+        <div class="glsect">
             <div class="title">
                 <div class="semi-header-text">procedural terrain generation</div>
                 <div class="normal-header-text">with webgl and <a class="link" target="_blank" href="https://github.com/Syritx/improved-noise" style="text-decoration: none; ">improved noise</a></div>
@@ -39,7 +38,6 @@
         <script src="js/gl-matrix.js"></script>
         <script src="js/plain.js"></script>
         <script src="js/shader.js"></script>
-        <script src="js/welcome.js"></script>
         <script src="js/procedural.js"></script>
 
     <footer class="footer-main">
