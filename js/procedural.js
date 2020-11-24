@@ -13,10 +13,10 @@ function _start() {
 
     if (!GL) {
         GL = canvas.getContext('experimental-webgl')
-        alert("WebGL is not fully supported by your browser, if you want to see the whole site, you might have to change browsers.")
+        alert("WebGL is not fully supported by your browser, if you want to see the WebGL contents, you might have to change browsers.")
     }
     if (!GL) {
-        alert("WebGL is not supported by your browser")
+        alert("WebGL is not supported by your browser, if you want to see the WebGL contents, you might have to change browsers.")
         return
     }
 
