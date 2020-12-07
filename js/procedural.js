@@ -43,7 +43,7 @@ function _start() {
 
 
             start_vertices[i*24] =   (-.5+x)*.4
-            start_vertices[i*24+1] = -.1+noise(((-.5+x)/resolution)*freq,((.5+y)/resolution)*freq,seed)*ampl
+            start_vertices[i*24+1] = -.1+createNoiseLayer(7, 2, .5, (-.5+x)/resolution, (.5+y)/resolution, seed)
             start_vertices[i*24+2] = (.5+y)*.4
 
             start_vertices[i*24+3] = colors[0]
@@ -51,7 +51,7 @@ function _start() {
             start_vertices[i*24+5] = colors[2]
 
             start_vertices[i*24+6] =   (.5+x)*.4
-            start_vertices[i*24+7] =   -.1+noise(((.5+x)/resolution)*freq,((.5+y)/resolution)*freq,seed)*ampl
+            start_vertices[i*24+7] =   -.1+createNoiseLayer(7, 2, .5, (.5+x)/resolution, (.5+y)/resolution, seed)
             start_vertices[i*24+8] =   (.5+y)*.4
 
             start_vertices[i*24+9]  = colors[0]
@@ -59,7 +59,7 @@ function _start() {
             start_vertices[i*24+11] = colors[2]
 
             start_vertices[i*24+12] =  ( .5+x)*.4
-            start_vertices[i*24+13] =  -.1+noise(((.5+x)/resolution)*freq,((-.5+y)/resolution)*freq,seed)*ampl
+            start_vertices[i*24+13] =  -.1+createNoiseLayer(7, 2, .5, (.5+x)/resolution, (-.5+y)/resolution, seed)
             start_vertices[i*24+14] =  (-.5+y)*.4
 
             start_vertices[i*24+15] = colors[0]
@@ -67,7 +67,7 @@ function _start() {
             start_vertices[i*24+17] = colors[2]
 
             start_vertices[i*24+18] = (-.5+x)*.4
-            start_vertices[i*24+19] = -.1+noise(((-.5+x)/resolution)*freq,((-.5+y)/resolution)*freq,seed)*ampl
+            start_vertices[i*24+19] = -.1+createNoiseLayer(7, 2, .5, (-.5+x)/resolution, (-.5+y)/resolution, seed)
             start_vertices[i*24+20] = (-.5+y)*.4
 
             start_vertices[i*24+21] = colors[0]
@@ -90,7 +90,27 @@ function _start() {
     GL.clearColor(0.0,0.0,0.0,1.0)
     GL.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT)
     GL.enable(GL.DEPTH_TEST)
-    _plains[0].render()
+
+    var loop = function() {
+        _plains[0].render()
+        requestAnimationFrame(loop)
+    }
+    requestAnimationFrame(loop)
+}
+
+function createNoiseLayer(octaves, lac, per, x, y, seed) {
+    
+    frequency = 2
+    amplitude = 19
+
+    noiseValue = 0
+    for(var id = 0; id < octaves; id++) {
+        noiseValue += noise(x*frequency, y*frequency, seed)*amplitude
+        frequency *= lac
+        amplitude *= per
+    }
+
+    return noiseValue
 }
 
 _start()
