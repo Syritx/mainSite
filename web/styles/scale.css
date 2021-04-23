@@ -1,0 +1,23 @@
+#webgl-wrapper {
+    height: 1000px;
+}
+
+@media only screen and (max-width: 1670px) {
+    #terrain-context {
+        height: 800px;
+    }
+
+    #webgl-wrapper {
+        height: 800px;
+    }
+}
+
+@media only screen and (max-width: 1470px) {
+    #terrain-context {
+        height: 600px;
+    }
+
+    #webgl-wrapper {
+        height: 600px;
+    }
+}

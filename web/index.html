@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="styles/scale.css">
+    </head>
+
+    <body>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <img src="images/ErfRhE6XUAwZaoT.jpg" style="display: none;">
+        <img src="images/Euq8B5kXMAQP2EH.jpg" style="display: none;">
+        <img src="images/My Post-4.png" style="display: none;">
+        <img src="images/Screen Shot 2021-04-22 at 2.10.22 PM.png" style="display: none;">
+
+        <div id="webgl-wrapper">
+            <canvas id="terrain-context" width="4000px" height="2000px">
+            </canvas>
+
+            <div class="nav-bar"></div>
+            <div class="title">KHIABYTE</div>
+            <div style="width: 100%; display: inline-block; text-align: -moz-center; text-align: center;">
+                <a target="_blank" href="https://www.github.com/khiabyte">
+                    <div id="img-2" style="display: inline-block; width: 50px; height: 50px; border-radius: 100px; text-align: -webkit-center; text-align: -moz-center; text-align:center; position: relative; margin-left: 25px; margin-right: 25px; margin-top: 30px;"></div>
+                </a>
+                <a target="_blank" href="https://www.twitter.com/khiabyte">
+                    <div id="img-2" style="display: inline-block; width: 50px; height: 50px; border-radius: 100px; text-align: -webkit-center; text-align: -moz-center; position: relative; margin-left: 25px; margin-right: 25px; margin-top: 30px;"></div>
+                </a>
+            </div>
+            
+        </div>
+
+        <div class="slideshow">
+
+            <div id="img-3" style="position: absolute; text-align: -moz-center; display: inline-block; text-align: center;">
+                <div style="color: white; margin-top: 250px; font-weight: 500; font-size: 50px;">UNITY</div>
+                <div style="color: white; margin-top: 2px; font-weight: 500; font-size: 20px;">NATURE SCENES</div>
+            </div>
+
+            <div style="height: 100px; position: absolute;" onclick="onButtonClick(-1)" class="left-button"> < </div>
+            <div style="height: 100px; position: unset;" onclick="onButtonClick( 1)" class="right-button"> > </div>
+        </div> 
+
+        <script src="js/gl-matrix.js"></script>
+        <script src="js/noise.js"></script>
+        <script src="js/shader.js"></script>
+        <script src="js/webgl.js"></script>
+
+        <script>
+            var imageId = 3
+
+            function onButtonClick(dir) {
+                var current = imageId
+
+                imageId += dir
+                if (imageId > 4) imageId = 1
+                else if (imageId < 1) imageId = 4
+
+                var element = document.getElementById('img-'+current);
+                element.id = 'img-'+imageId
+            }
+        </script>
+    </body>
+</html>
