@@ -147,6 +147,10 @@ function render(shader) {
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
     gl.viewport(0,0,4000,window.outerWidth*1.05)
 
+    if (window.innerWidth < 1600) {
+        gl.viewport(0,0,4000,window.outerWidth*1.35)
+    }
+
     shader.use()
 
     var viewMat = new Float32Array(16);
@@ -155,10 +159,10 @@ function render(shader) {
     gl.uniformMatrix4fv(matViewUniformLocation, gl.FALSE, viewMat);
     time+=.001
 
-    gl.uniform3f(gl.getUniformLocation(shader.program, 'color'), 1, 1, 1)
-    gl.drawElements(gl.POINTS, indices.length, gl.UNSIGNED_SHORT, 0);
     gl.uniform3f(gl.getUniformLocation(shader.program, 'color'), 229/255.0, 214/255.0, 197/255.0)
     gl.drawElements(gl.LINES, indices.length, gl.UNSIGNED_SHORT, 0);
+    gl.uniform3f(gl.getUniformLocation(shader.program, 'color'), 1, 1, 1)
+    gl.drawElements(gl.POINTS, indices.length, gl.UNSIGNED_SHORT, 0);
 }
 
 start()

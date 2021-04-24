@@ -19,25 +19,53 @@
             <div class="title">KHIABYTE</div>
             <div style="width: 100%; display: inline-block; text-align: -moz-center; text-align: center;">
                 <a target="_blank" href="https://www.github.com/khiabyte">
-                    <div id="img-2" style="display: inline-block; width: 50px; height: 50px; border-radius: 100px; text-align: -webkit-center; text-align: -moz-center; text-align:center; position: relative; margin-left: 25px; margin-right: 25px; margin-top: 30px;"></div>
+                    <div id="_img-2" style="display: inline-block; width: 50px; height: 50px; border-radius: 100px; text-align: -webkit-center; text-align: -moz-center; text-align:center; position: relative; margin-left: 25px; margin-right: 25px; margin-top: 30px;"></div>
                 </a>
                 <a target="_blank" href="https://www.twitter.com/khiabyte">
-                    <div id="img-2" style="display: inline-block; width: 50px; height: 50px; border-radius: 100px; text-align: -webkit-center; text-align: -moz-center; position: relative; margin-left: 25px; margin-right: 25px; margin-top: 30px;"></div>
+                    <div id="_img-2" style="display: inline-block; width: 50px; height: 50px; border-radius: 100px; text-align: -webkit-center; text-align: -moz-center; position: relative; margin-left: 25px; margin-right: 25px; margin-top: 30px;"></div>
                 </a>
             </div>
             
         </div>
 
-        <div class="slideshow">
+        <div style="width: 100%;">
+            <div class="slideshow">
 
-            <div id="img-3" style="position: absolute; text-align: -moz-center; display: inline-block; text-align: center;">
-                <div style="color: white; margin-top: 250px; font-weight: 500; font-size: 50px;">UNITY</div>
-                <div style="color: white; margin-top: 2px; font-weight: 500; font-size: 20px;">NATURE SCENES</div>
+                <div id="img-4" style="text-align: -moz-center; display: inline-block; text-align: center;">
+                    <div style="color: white; margin-top: 250px; font-weight: 500; font-size: 50px;">OCTOBER</div>
+                    <div style="color: white; margin-top: 2px; font-weight: 500; font-size: 20px;">14th 2020</div>
+                </div>
+
+                <div id="img-2" style="text-align: -moz-center; display: inline-block; text-align: center;">
+                    <div style="color: white; margin-top: 250px; font-weight: 500; font-size: 50px;">JANUARY</div>
+                    <div style="color: white; margin-top: 2px; font-weight: 500; font-size: 20px;">11th 2021</div>
+                </div>
+
+                <div id="img-1" style="text-align: -moz-center; display: inline-block; text-align: center;">
+                    <div style="color: white; margin-top: 250px; font-weight: 500; font-size: 50px;">MARCH</div>
+                    <div style="color: white; margin-top: 2px; font-weight: 500; font-size: 20px;">3rd 2021</div>
+                </div>
+
+                <div id="img-3" style="text-align: -moz-center; display: inline-block; text-align: center;">
+                    <div style="color: white; margin-top: 250px; font-weight: 500; font-size: 50px;">APRIL</div>
+                    <div style="color: white; margin-top: 2px; font-weight: 500; font-size: 20px;">22nd 2021</div>
+                </div>
+            </div> 
+        </div>
+
+        <div style="width: 100%;">
+            <div class="slideshow" style="height: 600px;">
+                <div id="img-5" style="text-align: -moz-center; display: inline-block; text-align: center;">
+                    <div style="color: white; margin-top: 250px; font-size: 30px; text-shadow: 0px 2px 10px black; font-weight: 600;">CONFLICT ONLINE</div>
+                    <div style="color: white; margin-top: 2px; font-weight: 500; text-shadow: 0px 2px 10px black; font-size: 20px;">Victory theme [F MAJ]</div>
+                </div>
+
+                <div id="img-6" style="text-align: -moz-center; display: inline-block; text-align: center;">
+                    <div style="color: white; margin-top: 250px; font-size: 30px; text-shadow: 0px 2px 10px black; font-weight: 600;">CONFLICT ONLINE</div>
+                    <div style="color: white; margin-top: 2px; font-weight: 500; text-shadow: 0px 2px 10px black; font-size: 20px;">Main theme [Ab MAJ]</div>
+                </div>
             </div>
-
-            <div style="height: 100px; position: absolute;" onclick="onButtonClick(-1)" class="left-button"> < </div>
-            <div style="height: 100px; position: unset;" onclick="onButtonClick( 1)" class="right-button"> > </div>
-        </div> 
+        </div>
 
         <script src="js/gl-matrix.js"></script>
         <script src="js/noise.js"></script>
@@ -45,7 +73,7 @@
         <script src="js/webgl.js"></script>
 
         <script>
-            var imageId = 3
+            var imageId = 1
 
             function onButtonClick(dir) {
                 var current = imageId
