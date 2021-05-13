@@ -2,6 +2,23 @@
     height: 1000px;
 }
 
+:root {
+    --width: 100%
+}
+
+#img-1:hover {
+    width: var(--width);
+}
+#img-2:hover {
+    width: var(--width);
+}
+#img-3:hover {
+    width: var(--width);
+}
+#img-4:hover {
+    width: var(--width);
+}
+
 @media only screen and (max-width: 1670px) {
     #terrain-context {
         height: 800px;
@@ -25,5 +42,18 @@
 @media only screen and (max-width: 1280px) {
     .slideshow {
         display: unset;
+    }
+
+    #img-1:hover {
+        width: 100%;
+    }
+    #img-2:hover {
+        width: 100%;
+    }
+    #img-3:hover {
+        width: 100%;
+    }
+    #img-4:hover {
+        width: 100%;
     }
 }

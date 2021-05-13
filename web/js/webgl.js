@@ -43,6 +43,23 @@ var time = 0
 var gl = null
 var seed = Math.random()*100000
 
+var isDown = false
+
+var xlast = 0 
+var ylast = 0
+
+var xrot = 0
+var yrot = 0
+var zrot = 0
+
+document.body.onmousedown = function() { 
+    isDown = true
+}
+
+document.body.onmouseup = function() {
+    isDown = false
+}
+
 function start() {
 
     var canvas = document.getElementById('terrain-context')
@@ -59,6 +76,17 @@ function start() {
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
     var index = 0
     var indicesIndex = 0
+
+
+    canvas.addEventListener('mousedown', function(event) {
+
+        var glPosition = parseFloat(event.pageX / window.innerWidth - 0.5) * 2
+        console.log(glPosition)
+    })
+
+    canvas.onmousedown = function() {
+        console.log("hello")
+    }
 
     for (var x = 0; x < resolution; x++) {
         for (var y = 0; y < resolution; y++) {
@@ -120,6 +148,27 @@ function start() {
     gl.uniformMatrix4fv(matProjUniformLocation, gl.FALSE, projMatrix);
 
     var loop = function() {
+
+        document.onmousemove = function(e) {
+
+            var x =  (e.clientX/canvas.clientWidth - .5) * 2
+            var y = -(e.clientY/canvas.clientHeight - .5) * 2
+
+            if (isDown == true) {
+
+                console.log(x + ' ' + y)
+
+                var xdir = xlast - x
+                var ydir = ylast - y
+                
+                xrot += xdir*3;
+                yrot += ydir*3;
+            }
+
+            xlast = x
+            ylast = y
+        }
+
         gl.useProgram(shader.program)
         render(shader)
         requestAnimationFrame(loop)
@@ -152,12 +201,13 @@ function render(shader) {
     }
 
     shader.use()
+    if (yrot > .8) yrot = .8
+    if (yrot < -.2) yrot = -.2
 
     var viewMat = new Float32Array(16);
-    glMatrix.mat4.lookAt(viewMat, [Math.sin(time)*90, 50, Math.cos(time)*90], [0, 0, 0], [0, 1, 0])
+    glMatrix.mat4.lookAt(viewMat, [Math.sin(xrot)*90 * Math.cos(yrot), Math.sin(yrot)*90, Math.cos(xrot)*90 * Math.cos(yrot)], [0, 0, 0], [0, 1, 0])
     var matViewUniformLocation = gl.getUniformLocation(shader.program, 'mView');
     gl.uniformMatrix4fv(matViewUniformLocation, gl.FALSE, viewMat);
-    time+=.001
 
     gl.uniform3f(gl.getUniformLocation(shader.program, 'color'), 229/255.0, 214/255.0, 197/255.0)
     gl.drawElements(gl.LINES, indices.length, gl.UNSIGNED_SHORT, 0);
