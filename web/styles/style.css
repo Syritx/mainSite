@@ -37,6 +37,18 @@ body {
     display: inline-block;
     width: 100%;
 }
+.info {
+    text-align: -moz-center;
+    text-align: -webkit-center;
+    font-size: 20px;
+    margin-top: 10px;
+    font-weight: 500;
+    color: white;
+    text-shadow: 0px 2px 8px black;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
 
 .slideshow {
     width: 100%;
@@ -97,7 +109,7 @@ body {
     width: 100%;
     height: 100%;
 
-    background-image: url("../images/Euq8B5kXMAQP2EH.jpg");
+    background-image: url("../images/mar3.jpg");
     background-position: center;
     background-size: cover;
 }
@@ -112,7 +124,7 @@ body {
     width: 100%;
     height: 100%;
 
-    background-image: url("../images/ErfRhE6XUAwZaoT.jpg");
+    background-image: url("../images/mar3.jpg");
     background-position: center;
     background-size: cover;
 }
@@ -128,7 +140,7 @@ body {
     width: 100%;
     height: 100%;
 
-    background-image: url("../images/ErfRhE6XUAwZaoT.jpg");
+    background-image: url("../images/jan11.jpg");
     background-position: center;
     background-size: cover;
 }
@@ -143,7 +155,7 @@ body {
     width: 100%;
     height: 100%;
 
-    background-image: url("../images/Screen\ Shot\ 2021-04-22\ at\ 2.10.22\ PM.png");
+    background-image: url("../images/jun20.png");
     background-position: center;
     background-size: cover;
 }
@@ -158,7 +170,7 @@ body {
     width: 100%;
     height: 100%;
 
-    background-image: url("../images/My\ Post-4.png");
+    background-image: url("../images/oct14.png");
     background-position: center;
     background-size: cover;
 }
@@ -174,7 +186,7 @@ body {
 
     height: 500px;
 
-    background-image: url("../images/Screen\ Shot\ 2021-04-24\ at\ 1.40.45\ PM.png");
+    background-image: url("../images/covt.png");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -191,7 +203,23 @@ body {
 
     height: 500px;
 
-    background-image: url("../images/Screen\ Shot\ 2021-04-24\ at\ 1.41.05\ PM.png");
+    background-image: url("../images/comt.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#_git {
+    background-image: url("../images/github.png");
+    filter: brightness(0);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#_twitter {
+    background-image: url("../images/twitter.png");
+    filter: brightness(0);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;

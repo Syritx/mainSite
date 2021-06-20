@@ -2,6 +2,8 @@ const vertices = []
 const indices = []
 
 const resolution = 100;
+var seed = Math.random()*100000
+var vbo = 0
 
 fragmentShaderSource = 
 `
@@ -41,7 +43,6 @@ void main() {
 
 var time = 0
 var gl = null
-var seed = Math.random()*100000
 
 var isDown = false
 
@@ -51,6 +52,8 @@ var ylast = 0
 var xrot = 0
 var yrot = 0
 var zrot = 0
+
+var zoomLevel = 90
 
 document.body.onmousedown = function() { 
     isDown = true
@@ -77,17 +80,6 @@ function start() {
     var index = 0
     var indicesIndex = 0
 
-
-    canvas.addEventListener('mousedown', function(event) {
-
-        var glPosition = parseFloat(event.pageX / window.innerWidth - 0.5) * 2
-        console.log(glPosition)
-    })
-
-    canvas.onmousedown = function() {
-        console.log("hello")
-    }
-
     for (var x = 0; x < resolution; x++) {
         for (var y = 0; y < resolution; y++) {
             
@@ -110,7 +102,7 @@ function start() {
     }
 
     var shader = new Shader(vertexShaderSource, fragmentShaderSource, gl)
-    var vbo = gl.createBuffer()
+    vbo = gl.createBuffer()
     gl.bindBuffer(gl.ARRAY_BUFFER, vbo)
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW)
 
@@ -149,7 +141,7 @@ function start() {
 
     var loop = function() {
 
-        document.onmousemove = function(e) {
+        canvas.onmousemove = function(e) {
 
             var x =  (e.clientX/canvas.clientWidth - .5) * 2
             var y = -(e.clientY/canvas.clientHeight - .5) * 2
@@ -169,6 +161,11 @@ function start() {
             ylast = y
         }
 
+        document.body.onkeydown = function(e) {
+            if (e.key == 'q') createNewNoise( .005)
+            if (e.key == 'e') createNewNoise(-.005)
+        }
+        
         gl.useProgram(shader.program)
         render(shader)
         requestAnimationFrame(loop)
@@ -183,7 +180,7 @@ function noiseLayer(x, y, lacunarity, persistance, octaves) {
     var n = 1
 
     for (var o = 0; o < octaves; o++) {
-        n += noise(x*freq, y*freq, 100) * ampl
+        n += noise(x*freq, y*freq, seed) * ampl
         freq *= lacunarity
         ampl *= persistance
     }
@@ -191,7 +188,28 @@ function noiseLayer(x, y, lacunarity, persistance, octaves) {
     return n
 }
 
+function createNewNoise(seedOffset) {
+    var index = 0
+    seed+=seedOffset
+
+    for (var x = 0; x < resolution; x++) {
+        for (var y = 0; y < resolution; y++) {
+            
+            vertices[index*3  ] = x-resolution/2
+            vertices[index*3+1] = noiseLayer(x/resolution*2, y/resolution*2, 2, 0.5, 6)*50-50
+            vertices[index*3+2] = y-resolution/2+3
+
+            index++
+        }
+    }
+
+    gl.bindBuffer(gl.ARRAY_BUFFER, vbo)
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW)
+}
+
+
 function render(shader) {
+
     gl.clearColor(1,1,1,1)
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
     gl.viewport(0,0,4000,window.outerWidth*1.05)
@@ -205,7 +223,7 @@ function render(shader) {
     if (yrot < -.2) yrot = -.2
 
     var viewMat = new Float32Array(16);
-    glMatrix.mat4.lookAt(viewMat, [Math.sin(xrot)*90 * Math.cos(yrot), Math.sin(yrot)*90, Math.cos(xrot)*90 * Math.cos(yrot)], [0, 0, 0], [0, 1, 0])
+    glMatrix.mat4.lookAt(viewMat, [Math.sin(xrot) * zoomLevel * Math.cos(yrot), Math.sin(yrot) * zoomLevel, Math.cos(xrot) * zoomLevel * Math.cos(yrot)], [0, 0, 0], [0, 1, 0])
     var matViewUniformLocation = gl.getUniformLocation(shader.program, 'mView');
     gl.uniformMatrix4fv(matViewUniformLocation, gl.FALSE, viewMat);
 
