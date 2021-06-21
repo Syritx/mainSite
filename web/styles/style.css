@@ -160,6 +160,21 @@ body {
     background-size: cover;
 }
 
+#img-7 {
+
+    filter: blur(5px);
+    transition: width var(--transition-time) ease-in-out;
+
+    filter: blur(0px);
+
+    width: 100%;
+    height: 100%;
+
+    background-image: url("../images/jun21.png");
+    background-position: center;
+    background-size: cover;
+}
+
 #img-4 {
 
     filter: blur(5px);
