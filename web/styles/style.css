@@ -114,6 +114,18 @@ body {
     background-size: cover;
 }
 
+#img {
+    filter: blur(5px);
+    transition: width var(--transition-time) ease-in-out;
+
+    filter: blur(0px);
+
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
 #_img-2 {
 
     filter: blur(5px);
@@ -125,67 +137,6 @@ body {
     height: 100%;
 
     background-image: url("../images/mar3.jpg");
-    background-position: center;
-    background-size: cover;
-}
-
-
-#img-2 {
-
-    filter: blur(5px);
-    transition: width var(--transition-time) ease-in-out;
-
-    filter: blur(0px);
-
-    width: 100%;
-    height: 100%;
-
-    background-image: url("../images/jan11.jpg");
-    background-position: center;
-    background-size: cover;
-}
-
-#img-3 {
-
-    filter: blur(5px);
-    transition: width var(--transition-time) ease-in-out;
-
-    filter: blur(0px);
-
-    width: 100%;
-    height: 100%;
-
-    background-image: url("../images/jun20.png");
-    background-position: center;
-    background-size: cover;
-}
-
-#img-7 {
-
-    filter: blur(5px);
-    transition: width var(--transition-time) ease-in-out;
-
-    filter: blur(0px);
-
-    width: 100%;
-    height: 100%;
-
-    background-image: url("../images/jun21.png");
-    background-position: center;
-    background-size: cover;
-}
-
-#img-4 {
-
-    filter: blur(5px);
-    transition: width var(--transition-time) ease-in-out;
-
-    filter: blur(0px);
-
-    width: 100%;
-    height: 100%;
-
-    background-image: url("../images/oct14.png");
     background-position: center;
     background-size: cover;
 }
